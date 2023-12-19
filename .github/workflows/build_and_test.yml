@@ -22,4 +22,8 @@ jobs:
         sudo apt-get install -y doxygen libgmp-dev libjansson-dev libb64-dev
 
     - name: Run tests
-      run: make check
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        make check
