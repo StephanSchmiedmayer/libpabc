@@ -8,14 +8,14 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-      # This job is named 'build-and-test' and will run on the latest Ubuntu runner provided by GitHub.
+      # Job is named 'build-and-test', runs on the latest Ubuntu runner
 
     env:
       BUILD_DIR: "build"
 
     steps:
     - uses: actions/checkout@v4
-      # This step checks out the repository code
+      # Check out repository code
 
     - name: Install dependencies
       run: |
