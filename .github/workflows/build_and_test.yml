@@ -1,0 +1,22 @@
+name: build_and_test
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    # This job is named 'build-and-test' and will run on the latest Ubuntu runner provided by GitHub.
+
+    steps:
+    - uses: actions/checkout@v4
+
+      # This step checks out the repository code
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y doxygen libb64 gmp jansson
+
+    - name: Run tests
+      run: make check
