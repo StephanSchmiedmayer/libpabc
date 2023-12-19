@@ -3,6 +3,7 @@ name: build_and_test
 on:
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   build-and-test:
@@ -16,7 +17,10 @@ jobs:
       # This step checks out the repository code
 
     - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -y doxygen libb64 gmp jansson
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y doxygen libgmp-dev jansson-dev
+        git clone https://github.com/libb64/libb64.git && cd libb64 && make && sudo make install && cd ..
 
     - name: Run tests
       run: make check
