@@ -8,12 +8,13 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+      # This job is named 'build-and-test' and will run on the latest Ubuntu runner provided by GitHub.
 
-    # This job is named 'build-and-test' and will run on the latest Ubuntu runner provided by GitHub.
+    env:
+      BUILD_DIR: "build"
 
     steps:
     - uses: actions/checkout@v4
-
       # This step checks out the repository code
 
     - name: Install dependencies
@@ -23,12 +24,12 @@ jobs:
 
     - name: Build
       run: |
-        mkdir build
-        cd build
+        mkdir $BUILD_DIR
+        cd $BUILD_DIR
         cmake ..
         make -j
 
     - name: Run tests
       run: |
-        cd build
+        cd $BUILD_DIR
         make check
