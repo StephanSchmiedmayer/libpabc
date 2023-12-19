@@ -1,1 +1,5 @@
 /build/
+/tests/cred_issue_test/credential.json
+/tests/cred_request_test/credential_request.json
+/tests/cred_request_test/user_context.json
+/tests/proof_test/proof.json
